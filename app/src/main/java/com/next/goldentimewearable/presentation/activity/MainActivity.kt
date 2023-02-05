@@ -1,12 +1,7 @@
-/* While this template provides a good starting point for using Wear Compose, you can always
- * take a look at https://github.com/android/wear-os-samples/tree/main/ComposeStarter and
- * https://github.com/android/wear-os-samples/tree/main/ComposeAdvanced to find the most up to date
- * changes to the libraries and their usages.
- */
-
-package com.next.goldentimewearable.presentation
+package com.next.goldentimewearable.presentation.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
@@ -19,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material.Button
 import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
+import com.next.goldentimewearable.model.HeartRateRepository
 import com.next.goldentimewearable.presentation.theme.GoldenTimeWearableTheme
 
 class MainActivity : ComponentActivity() {
@@ -27,6 +23,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             WearApp()
         }
+
+        initialize()
+    }
+
+    private fun initialize() {
+        val repository = HeartRateRepository(this)
+        repository.startWatching()
     }
 }
 
@@ -64,7 +67,7 @@ fun Greeting() {
 @Composable
 fun Activator() {
     Button(
-        onClick = { /*TODO*/ }
+        onClick = { Log.d("HEALTH WATCH", "CLICKED!") }
     ) {
         Text(text = "Watch")
     }
