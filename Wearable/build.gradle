@@ -1,0 +1,102 @@
+/*
+ * Copyright (C) 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        applicationId "com.example.android.wearable.datalayer"
+        versionCode 1
+        versionName "1.0"
+
+        minSdk 30 // changed from 26 to 30
+        targetSdk 30
+    }
+
+    lintOptions {
+        warningsAsErrors true
+        ignore "ObsoleteLintCustomCheck"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+    }
+
+    buildFeatures {
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion libs.versions.compose.compiler.get()
+    }
+}
+
+dependencies {
+    def composeBom = platform(libs.androidx.compose.bom)
+
+    implementation composeBom
+    implementation libs.kotlinx.coroutines.core
+    implementation libs.kotlinx.coroutines.android
+    implementation libs.kotlinx.coroutines.play.services
+    implementation libs.androidx.activity.compose
+    implementation libs.compose.ui.tooling
+    implementation libs.compose.foundation
+    implementation libs.androidx.lifecycle.viewmodel.compose
+    implementation libs.androidx.lifecycle.viewmodel.ktx
+    // Compose for Wear OS Dependencies
+    // Developer Preview currently Alpha 07, with new releases coming soon.
+    // NOTE: DO NOT INCLUDE a dependency on androidx.compose.material:material.
+    // androidx.wear.compose:compose-material is designed as a replacement not an addition to
+    // androidx.compose.material:material. If there are features from that you feel are missing from
+    // androidx.wear.compose:compose-material please raise a bug to let us know:
+    // https://issuetracker.google.com/issues/new?component=1077552&template=1598429&pli=1
+    implementation libs.wear.compose.material
+
+    // Foundation is additive, so you can use the mobile version in your Wear OS app.
+    implementation libs.wear.compose.foundation
+
+    implementation libs.playservices.wearable
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.percentlayout:percentlayout:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'
+    implementation "androidx.health:health-services-client:1.0.0-beta02"
+    implementation "com.google.guava:guava:31.0.1-android"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+
+}
