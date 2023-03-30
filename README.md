@@ -1,11 +1,11 @@
 # Wear OS for Golden Time ⌚
 ## About
 ---
-Wear OS for Golden Time has been made to assist an Mobile application for Golden Time. It monitors user's body condition and send alert to the application in case of an emergency. We took advantage of high quality data from Health Services.
+Wear OS for Golden Time has been made to assist an Mobile application for Golden Time. It monitors user's body condition and send alert to the application in case of an emergency. We took advantage of high quality data from **[Health Services](https://developer.android.com/training/wearables/health-services)**.
 
-Our Wear OS continuously measures user's heart rate and detects falling activity. If the heart rate is outside of the normal range(40-10bpm) or fall activity is detected by Health Services, it finds the user is in emergent situation. 
+Our Wear OS continuously measures user's **heart rate** and detects **falling activity**. If the heart rate is outside of the normal range(40-10bpm) or fall activity is detected by Health Services, it finds the user is in emergent situation. 
 
-Wear device and a handheld communicate using MessageClient. If a MessageClient listener on a mobile application recieves a message, new activity starts on the mobile device and emergency is handeled.
+Wear device and a handheld communicate using [MessageClient](https://developer.android.com/training/wearables/data/messages). If a MessageClient listener on a mobile application recieves a message, new activity starts on the mobile device and emergency is handeled.
 
 ## Screenshots
 ---
