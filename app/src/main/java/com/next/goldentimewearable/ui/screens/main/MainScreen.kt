@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -19,6 +20,10 @@ import com.next.goldentimewearable.ui.components.main.Heartbeat
 @Composable
 fun MainScreen(model: MainViewModel = viewModel()) {
     val bpm by model.bpm.observeAsState()
+
+    LaunchedEffect(bpm) {
+        model.sendMessage(bpm.toString())
+    }
 
     DisposableEffect(Unit) {
         onDispose {
