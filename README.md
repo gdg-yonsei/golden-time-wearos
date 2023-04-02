@@ -12,11 +12,8 @@ Our Wear OS continuously measures user's **heart rate** and detects **falling ac
 Wear device and a handheld communicate using [MessageClient](https://developer.android.com/training/wearables/data/messages). If a MessageClient listener on a mobile application recieves a message, new activity starts on the mobile device and emergency is handeled.
 
 ## Screenshots
-<img src="https://velog.velcdn.com/images/bona-park/post/86a42ec2-247a-44fa-88c0-c53a315eef07/image.png" width="90%" height="60%">
 
-
-
-
+![Screenshot_20230402_175812_framed](https://user-images.githubusercontent.com/11978494/229343034-d82c56eb-a26c-45ee-8e00-318b7b4eca73.png)
 
 ## Features
 The Wear OS for Golden Time lets you:
