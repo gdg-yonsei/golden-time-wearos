@@ -1,4 +1,4 @@
-package com.next.goldentimewearable.presentation.theme
+package com.next.goldentimewearable.ui.theme
 
 import androidx.compose.runtime.Composable
 import androidx.wear.compose.material.MaterialTheme

@@ -1,4 +1,4 @@
-package com.next.goldentimewearable.presentation.theme
+package com.next.goldentimewearable.ui.theme
 
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
